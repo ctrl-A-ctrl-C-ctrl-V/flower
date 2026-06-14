@@ -1,7 +1,7 @@
 # flower.c User Manual
 
 ## Overview
-FLOWER (`FL`oorplanner `W`ith `E`fficient `R`outing) is a floorplanning and routing application created in 1992 as part of my MTech thesis at Indian Institute of Technology in 1992. `flower.c` is the main body of the work. It is a standalone C program for simple chip block placement and first-layer routing on a fixed 2D grid. It reads block sizes and connection data from the user, computes a floorplan, places blocks, generates routing space, and attempts to connect nets on a single metallization layer.
+FLOWER (A `FL`oorplanner `W`ith `E`fficient `R`outing) is a floorplanning and routing application created in 1992 as part of my MTech thesis at Indian Institute of Technology in 1992. `flower.c` is the main body of the work. It is a standalone C program for simple chip block placement and first-layer routing on a fixed 2D grid. It reads block sizes and connection data from the user, computes a floorplan, places blocks, generates routing space, and attempts to connect nets on a single metallization layer.
 
 ---
 
