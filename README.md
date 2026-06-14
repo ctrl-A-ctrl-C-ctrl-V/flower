@@ -8,14 +8,13 @@ FLOWER (A `FL`oorplanner `W`ith `E`fficient `R`outing) is a floorplanning and ro
 ---
 
 ## Key Features
-- Interactive command-line input
+- Interactive command-line input.
 - By default, supports up to:
   - 25 blocks
-  - 50 distinct connections
-  But can be customized
-- Uses an `80 x 80` grid for layout and routing
-- Generates a text-based layout view
-- Detects insufficient area and aborts if routing space is too small
+  - 50 distinct connections, both of these numbers can be customized by the user. 
+- Uses an `80 x 80` grid for layout and routing.
+- Generates a text-based layout view.
+- Detects insufficient area and aborts if routing space is too small.
 
 ---
 
