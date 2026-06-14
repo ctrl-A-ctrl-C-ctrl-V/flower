@@ -147,13 +147,38 @@ int main()
         /*------------------------------mod8---------------------------------------*/
 }
 
+
+// Cross-platform safe input function
+int safe_scanf_int(const char *prompt, int *value) {
+    if (prompt != NULL) {
+        printf("%s", prompt);
+    }
+    fflush(stdout);
+
+#if defined(_WIN32)
+    if (scanf_s("%d", value) != 1) {
+        return 0; // Invalid input
+    }
+#else
+    if (scanf("%d", value) != 1) {
+        return 0; // Invalid input
+    }
+#endif
+
+    return 1; // Success
+}
+
+
 void readinput(nbl,ncl)
 int *nbl, *ncl;
 {
         int i,j;
 
         printf(" How many blocks do you have ?");
-        scanf_s("%d",nbl);
+        if (!safe_scanf_int(NULL, nbl)) {
+                printf(" Invalid input -- Sorry !\n");
+                exit(2);
+        }
         if (*nbl < 2)
         {
                 printf(" Insufficient number of blocks -- Sorry !\n");
@@ -163,18 +188,30 @@ int *nbl, *ncl;
         {
                 printf(" The length of the %dth block :",
                 i+1);
-                scanf_s("%d", &(blockarray[i].length));
+                if (!safe_scanf_int(NULL, &(blockarray[i].length))) {
+                        printf(" Invalid input -- Sorry !\n");
+                        exit(2);
+                }
                 printf(" The width of the %dth block :",
                 i+1);
-                scanf_s("%d", &blockarray[i].width);
+                if (!safe_scanf_int(NULL, &blockarray[i].width)) {
+                        printf(" Invalid input -- Sorry !\n");
+                        exit(2);
+                }
                 printf(" How many connections are there with this block ?");
-                scanf_s("%d", &blockarray[i].noconn);
+                if (!safe_scanf_int(NULL, &blockarray[i].noconn)) {
+                        printf(" Invalid input -- Sorry !\n");
+                        exit(2);
+                }
                 printf(" Input the connections :\n");
                 for (j=0; j < blockarray[i].noconn; j++)
                 {
                         printf("\t%dth connection :",j+
                         1);
-                        scanf_s("%d",&blockarray[i].conn[j]);
+                        if (!safe_scanf_int(NULL, &blockarray[i].conn[j])) {
+                                printf(" Invalid input -- Sorry !\n");
+                                exit(2);
+                        }
                         if (blockarray[i].conn[j]>*ncl) *
                                 ncl = blockarray[i].conn[j];
                 }
